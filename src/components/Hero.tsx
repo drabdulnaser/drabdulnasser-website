@@ -122,7 +122,7 @@ export const Hero: React.FC = () => {
 
       {/* Background Clinic Image Layer (Clean with Spine Hologram) */}
       <div 
-        className={`absolute inset-0 bg-cover bg-center bg-no-repeat z-0 transition-all duration-500 ${isRTL ? 'scale-x-[-1]' : ''} opacity-90 dark:opacity-30 dark:brightness-[0.45]`}
+        className="absolute inset-0 bg-cover bg-[68%_center] lg:bg-center bg-no-repeat z-0 transition-all duration-500 opacity-95 dark:opacity-75 dark:brightness-[0.75]"
         style={{ backgroundImage: 'url("/hero-bg.png")' }}
       />
 
@@ -140,8 +140,8 @@ export const Hero: React.FC = () => {
         />
       </div>
 
-      {/* ══════ MOBILE PHOTO (Only visible on mobile, bottom-0, transparent PNG) ══════ */}
-      <div className="lg:hidden absolute bottom-0 w-[58%] sm:w-[50%] h-[60%] sm:h-[70%] z-10 pointer-events-none"
+      {/* ══════ MOBILE PHOTO (Only visible on mobile, top-24, transparent PNG) ══════ */}
+      <div className="lg:hidden absolute top-24 w-[58%] sm:w-[50%] h-[55%] sm:h-[65%] z-10 pointer-events-none"
         style={{
           [isRTL ? 'left' : 'right']: '2%',
           ...bottomMaskStyle,
@@ -150,7 +150,7 @@ export const Hero: React.FC = () => {
         <img
           src="/dr-abdulnasser-transparent.png?v=3"
           alt="Dr. Abdul Nasser"
-          className="w-full h-full object-contain object-bottom"
+          className="w-full h-full object-contain object-top"
         />
       </div>
 
