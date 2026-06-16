@@ -2,6 +2,7 @@ import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import { Phone, MapPin, Mail, ChevronUp, Clock, Heart } from 'lucide-react';
+import { Logo } from './Logo';
 
 export const Footer: React.FC = () => {
   const { t, language } = useLanguage();
@@ -30,9 +31,11 @@ export const Footer: React.FC = () => {
         >
           {/* Column 1: Brand / Tagline */}
           <div className="sm:col-span-2 lg:col-span-1 space-y-4">
-            <a href="#home" className="inline-block">
-              <span className="text-2xl sm:text-3xl font-black tracking-tight gradient-text">
-                {language === 'ar' ? 'د. عبد الناصر' : language === 'ru' ? 'Д-р Абдул Насер' : 'Dr. Abdul Nasser'}
+            <a href="#home" className="inline-flex items-center gap-2.5 group">
+              <Logo size={36} className="w-9 h-9 group-hover:scale-105" />
+              <span className="text-xl font-black tracking-tight text-white">
+                {language === 'ar' ? 'د. عبد' : language === 'ru' ? 'Д-р Абдул' : 'Dr. Abdul'}
+                <span className="text-accent"> {language === 'ar' ? 'الناصر' : language === 'ru' ? 'Насер' : 'Nasser'}</span>
               </span>
             </a>
             <p className="text-sm font-semibold text-slate-300 leading-relaxed max-w-xs">

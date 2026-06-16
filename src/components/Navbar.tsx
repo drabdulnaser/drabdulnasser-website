@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Menu, X, Sun, Moon, Globe, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Logo } from './Logo';
 
 interface NavbarProps {
   darkMode: boolean;
@@ -73,11 +74,15 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12">
           {/* Logo / Brand & Active Status */}
-          <a href="#home" className="flex items-center gap-2.5 group">
-            <span className="text-xl sm:text-2xl font-black tracking-tight bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent group-hover:opacity-95 transition-all">
-              {language === 'ar' ? 'د. عبد الناصر' : language === 'ru' ? 'Д-р Абдул Насер' : 'Dr. Abdul Nasser'}
+          <a href="#home" className="flex items-center gap-2 group shrink-0">
+            <Logo size={36} className="w-8 h-8 sm:w-9 sm:h-9 group-hover:scale-105" />
+            {/* Brand Name */}
+            <span className="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white">
+              {language === 'ar' ? 'د. عبد' : language === 'ru' ? 'Д-р Абдул' : 'Dr. Abdul'}
+              <span className="text-primary dark:text-accent"> {language === 'ar' ? 'الناصر' : language === 'ru' ? 'Насер' : 'Nasser'}</span>
             </span>
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+            {/* Available badge - desktop only */}
+            <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               {language === 'ar' ? 'متاح اليوم' : language === 'ru' ? 'Доступен' : 'Available'}
             </span>

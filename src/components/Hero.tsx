@@ -120,11 +120,17 @@ export const Hero: React.FC = () => {
         }
       `}</style>
 
-      {/* Background Clinic Image Layer (Clean with Spine Hologram) */}
-      <div 
-        className="absolute inset-0 bg-cover bg-[68%_center] lg:bg-center bg-no-repeat z-0 transition-all duration-500 opacity-95 dark:opacity-75 dark:brightness-[0.75]"
-        style={{ backgroundImage: 'url("/hero-bg.png")' }}
-      />
+      {/* ══════ PREMIUM CSS GRADIENT BACKGROUND ══════ */}
+      <div className="absolute inset-0 z-0">
+        {/* Base gradient layer */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#e8f4f8] via-[#f0f7ff] to-[#e6f9f5] dark:from-[#060c1a] dark:via-[#0a1628] dark:to-[#071a17]" />
+        {/* Accent glow top-right */}
+        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-gradient-radial from-primary/8 via-secondary/5 to-transparent dark:from-primary/6 dark:via-secondary/4 dark:to-transparent rounded-full blur-3xl" />
+        {/* Accent glow bottom-left */}
+        <div className="absolute bottom-0 left-0 w-[50%] h-[50%] bg-gradient-radial from-accent/8 via-accent/3 to-transparent dark:from-accent/5 dark:via-accent/2 dark:to-transparent rounded-full blur-3xl" />
+        {/* Subtle dot grid texture */}
+        <div className="absolute inset-0 dot-grid opacity-60 dark:opacity-40" />
+      </div>
 
       {/* ══════ DESKTOP PHOTO (Only visible on desktop, bottom-0, transparent PNG) ══════ */}
       <div className="hidden lg:block absolute bottom-0 w-[42%] xl:w-[38%] h-[82%] lg:h-[86%] z-10 pointer-events-none"
@@ -134,23 +140,9 @@ export const Hero: React.FC = () => {
         }}
       >
         <img
-          src="/dr-abdulnasser-transparent.png?v=3"
+          src="/dr-abdulnasser-transparent.png?v=5"
           alt="Dr. Abdul Nasser"
           className="w-full h-full object-contain object-bottom"
-        />
-      </div>
-
-      {/* ══════ MOBILE PHOTO (Only visible on mobile, top-24, transparent PNG) ══════ */}
-      <div className="lg:hidden absolute top-24 w-[58%] sm:w-[50%] h-[55%] sm:h-[65%] z-10 pointer-events-none"
-        style={{
-          [isRTL ? 'left' : 'right']: '2%',
-          ...bottomMaskStyle,
-        }}
-      >
-        <img
-          src="/dr-abdulnasser-transparent.png?v=3"
-          alt="Dr. Abdul Nasser"
-          className="w-full h-full object-contain object-top"
         />
       </div>
 
@@ -168,12 +160,35 @@ export const Hero: React.FC = () => {
       <Particles />
 
       {/* ══════ CONTENT ══════ */}
-      <div className="relative z-20 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-36 sm:pt-40 lg:pt-44 pb-8 flex-1 flex flex-col justify-center">
+      <div className="relative z-20 max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 pt-28 sm:pt-32 lg:pt-44 pb-8 flex-1 flex flex-col justify-center">
+
+        {/* ─── MOBILE: Doctor Photo (in-flow, above text) ─── */}
+        <div className="lg:hidden flex justify-center mb-6">
+          <div className="relative w-[52%] sm:w-[38%] max-w-[200px]">
+            <div
+              className="rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 border border-accent/20 dark:border-accent/15 bg-white/50 dark:bg-slate-900/40 backdrop-blur-md"
+              style={bottomMaskStyle}
+            >
+              <img
+                src="/dr-abdulnasser-transparent.png?v=5"
+                alt="Dr. Abdul Nasser"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+            {/* Experience badge on mobile */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white/95 dark:bg-slate-900/90 backdrop-blur-xl rounded-xl px-3.5 py-1.5 border border-accent/20 dark:border-accent/15 shadow-lg shadow-accent/5 flex items-center gap-1.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-accent" />
+              <span className="text-[11px] font-black text-slate-900 dark:text-white whitespace-nowrap">{t('hero.experienceBadge.title')}</span>
+              <span className="text-[9px] font-semibold text-slate-400 whitespace-nowrap">{t('hero.experienceBadge.line1')}</span>
+            </div>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
 
           {/* ─── TEXT ─── */}
           <motion.div
-            className="lg:col-span-6 xl:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-start max-w-[82%] sm:max-w-[65%] lg:max-w-none z-20"
+            className="lg:col-span-6 xl:col-span-7 flex flex-col gap-4 sm:gap-5 lg:gap-6 items-center lg:items-start text-center lg:text-start z-20"
             initial="hidden" animate="show" transition={{ staggerChildren: 0.08 }}
           >
             {/* Slogan / tag line under the header */}
@@ -188,7 +203,7 @@ export const Hero: React.FC = () => {
               </span>
             </motion.div>
 
-            <motion.h1 variants={up} className="text-[2.4rem] sm:text-5xl xl:text-[3.5rem] font-black leading-[1.08] tracking-tight">
+            <motion.h1 variants={up} className="text-[2rem] sm:text-4xl xl:text-[3.5rem] font-black leading-[1.08] tracking-tight">
               <span className="block text-slate-900 dark:text-white">{t('hero.title1')}</span>
               <span className="block text-slate-900 dark:text-white">{t('hero.title2')}</span>
               <span className="block mt-1 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent _shim">
@@ -196,11 +211,11 @@ export const Hero: React.FC = () => {
               </span>
             </motion.h1>
 
-            <motion.p variants={up} className="text-[15px] text-slate-500 dark:text-slate-400 leading-relaxed max-w-md font-medium">
+            <motion.p variants={up} className="text-[13px] sm:text-[15px] text-slate-500 dark:text-slate-400 leading-relaxed max-w-md font-medium">
               {t('hero.description')}
             </motion.p>
 
-            <motion.div variants={up} className="flex flex-wrap gap-3">
+            <motion.div variants={up} className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <a href="#booking" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#0d2137] dark:bg-white text-white dark:text-slate-900 text-sm font-bold shadow-lg shadow-slate-900/10 hover:brightness-110 active:scale-[.97] transition-all cursor-pointer">
                 <Calendar className="w-4 h-4" />{t('hero.ctaBook')}
               </a>
@@ -209,7 +224,7 @@ export const Hero: React.FC = () => {
               </a>
             </motion.div>
 
-            <motion.div variants={up} className="flex flex-wrap gap-5 sm:gap-6 pt-5 border-t border-slate-200/50 dark:border-slate-800/60 w-full justify-center lg:justify-start">
+            <motion.div variants={up} className="flex flex-wrap gap-4 sm:gap-5 lg:gap-6 pt-4 lg:pt-5 border-t border-slate-200/50 dark:border-slate-800/60 w-full justify-center lg:justify-start">
               {[
                 { icon: <Home className="w-4 h-4" />, label: t('hero.features.home.title'), sub: t('hero.features.home.desc') },
                 { icon: <Monitor className="w-4 h-4" />, label: t('hero.features.online.title'), sub: t('hero.features.online.desc') },
@@ -230,7 +245,7 @@ export const Hero: React.FC = () => {
 
 
 
-          {/* ─── EXPERIENCE CARD (floats over photo) ─── */}
+          {/* ─── EXPERIENCE CARD (floats over photo, desktop only) ─── */}
           <div className="hidden lg:flex lg:col-span-6 xl:col-span-5 justify-end items-end relative min-h-[500px]">
             <motion.div
               initial={{ opacity: 0, x: isRTL ? -30 : 30, scale: 0.9 }}
@@ -320,3 +335,4 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
