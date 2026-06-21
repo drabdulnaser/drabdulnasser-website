@@ -34,8 +34,13 @@ export const Footer: React.FC = () => {
             <a href="#home" className="inline-flex items-center gap-2.5 group">
               <Logo size={36} className="w-9 h-9 group-hover:scale-105" />
               <span className="text-xl font-black tracking-tight text-white">
-                {language === 'ar' ? 'د. عبد' : language === 'ru' ? 'Д-р Абдул' : 'Dr. Abdul'}
-                <span className="text-accent"> {language === 'ar' ? 'الناصر' : language === 'ru' ? 'Насер' : 'Nasser'}</span>
+                {language === 'ar' ? (
+                  <>د. <span className="text-accent">عبد الناصر</span></>
+                ) : language === 'ru' ? (
+                  <>Д-р <span className="text-accent">Абдул Насер</span></>
+                ) : (
+                  <>Dr. <span className="text-accent">Abdul Nasser</span></>
+                )}
               </span>
             </a>
             <p className="text-sm font-semibold text-slate-300 leading-relaxed max-w-xs">
