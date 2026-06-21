@@ -35,11 +35,11 @@ export const Footer: React.FC = () => {
               <Logo size={36} className="w-9 h-9 group-hover:scale-105" />
               <span className="text-xl font-black tracking-tight text-white">
                 {language === 'ar' ? (
-                  <>د. <span className="text-accent">عبد الناصر</span></>
+                  <>د. <span className="text-accent">عبدالناصر</span></>
                 ) : language === 'ru' ? (
-                  <>Д-р <span className="text-accent">Абдул Насер</span></>
+                  <>Д-р <span className="text-accent">Абдулнасер</span></>
                 ) : (
-                  <>Dr. <span className="text-accent">Abdul Nasser</span></>
+                  <>Dr. <span className="text-accent">AbdulNasser</span></>
                 )}
               </span>
             </a>

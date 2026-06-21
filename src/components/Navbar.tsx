@@ -79,11 +79,11 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
             {/* Brand Name */}
             <span className="text-lg sm:text-xl font-black tracking-tight text-slate-900 dark:text-white">
               {language === 'ar' ? (
-                <>د. <span className="text-primary dark:text-accent">عبد الناصر</span></>
+                <>د. <span className="text-primary dark:text-accent">عبدالناصر</span></>
               ) : language === 'ru' ? (
-                <>Д-р <span className="text-primary dark:text-accent">Абдул Насер</span></>
+                <>Д-р <span className="text-primary dark:text-accent">Абдулнасер</span></>
               ) : (
-                <>Dr. <span className="text-primary dark:text-accent">Abdul Nasser</span></>
+                <>Dr. <span className="text-primary dark:text-accent">AbdulNasser</span></>
               )}
             </span>
             {/* Available badge - desktop only */}
